@@ -238,12 +238,19 @@
         }
 
         .about-image {
-            height: 400px;
-            background: linear-gradient(45deg, #654321, #8b4513);
-            border-radius: 15px;
-            position: relative;
-            overflow: hidden;
-        }
+    background: none;
+    border-radius: 15px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.about-image img {
+    width: auto;
+    max-width: 80%;
+    height: auto;
+    border-radius: 15px;
+    display: inline-block;
+}
 
         .about-image::before {
             content: '🔨';
@@ -315,7 +322,7 @@
         }
 
         @media (max-width: 768px) {
-            .hero h1 {
+           .hero h1 {
                 font-size: 2.5rem;
             }
             
@@ -335,8 +342,21 @@
             .section {
                 padding: 4rem 1rem;
             }
+            
+            /* Fix per evitare sovrapposizione con navbar fissa */
+            .section:first-of-type {
+                padding-top: 8rem;
+            }
+            
+            #progetti {
+                padding-top: 8rem;
+            }
+            
+            .section h2 {
+                font-size: 2.5rem;
+                margin-bottom: 2rem;
+            }
         }
-
         /* Modal Styles */
         .modal {
             display: none;
@@ -561,7 +581,7 @@
 <body>
     <nav class="nav" id="navbar">
         <div class="nav-content">
-            <div class="logo">Maestro Falegname</div>
+            <div class="logo">Lo Bianco legnami</div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#progetti">Progetti</a></li>
@@ -672,7 +692,9 @@
                 
                 <p>Il mio laboratorio si trova nel cuore del Piemonte, dove realizzo mobili su misura, restauri di pregio e creazioni artistiche per clienti che apprezzano l'artigianato di qualità.</p>
             </div>
-            <div class="about-image fade-in"></div>
+            <div class="about-image fade-in">
+                <img src="img/logo.png" alt="Logo Lo Bianco Legnami">
+            </div>
         </div>
     </section>
 
@@ -684,17 +706,12 @@
             <div class="contact-info">
                 <div class="contact-item fade-in">
                     <h3>📞 Telefono</h3>
-                    <p>+39 123 456 7890</p>
+                    <p>+39 3274126993</p>
                 </div>
                 
                 <div class="contact-item fade-in">
                     <h3>✉️ Email</h3>
-                    <p>info@falegnameria.it</p>
-                </div>
-                
-                <div class="contact-item fade-in">
-                    <h3>📍 Laboratorio</h3>
-                    <p>Via dell'Artigiano, 15<br>Torino, Italia</p>
+                    <p>lobiancolegnami@gmail.com</p>
                 </div>
             </div>
             
