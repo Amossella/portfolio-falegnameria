@@ -184,13 +184,14 @@
         }
 
         .project-image {
-             width: 100%;
-             height: 200px;              /* puoi aumentare/diminuire l’altezza */
-             background-size: cover;     /* riempie il box */
-             background-position: center;/* centra l’immagine */
-             background-repeat: no-repeat;
-             border-radius: 8px 8px 0 0; /* solo sopra, così si integra con la card */
+            width: 100%;
+            height: 200px;               /* fondamentale: senza non si vede */
+            background-size: cover;      /* riempie il box */
+            background-position: center; /* centra l’immagine */
+            background-repeat: no-repeat;
+            border-radius: 12px 12px 0 0; /* stesso stile della card */
         }
+
 
         .project-image::before {
             content: '🪚';
@@ -622,19 +623,17 @@
                 </div>
             </div>
 
-            <div class="project-card fade-in" data-project="Tavolino">
-                <div class="project-image">
-                   <div class="project-image" style="background-image: url('img/Tavolino.png');"></div>
-                </div>
-                <div class="project-content">
-                    <h3>Tavolini su Misura</h3>
-                    <p>Tavolino progettata e realizzata su misura.</p>
-                    <div class="project-tags">
-                        <span class="tag">Su Misura</span>
-                        <span class="tag">Moderno</span>
-                    </div>
-                </div>
-            </div>
+<div class="project-card fade-in" data-project="Tavolino">
+    <div class="project-image" style="background-image: url('img/Tavolino.png');"></div>
+    <div class="project-content">
+        <h3>Tavolini su Misura</h3>
+        <p>Tavolino progettata e realizzata su misura.</p>
+        <div class="project-tags">
+            <span class="tag">Su Misura</span>
+            <span class="tag">Moderno</span>
+        </div>
+    </div>
+</div>
 
             <div class="project-card fade-in" data-project="credenza-vintage">
                 <div class="project-image"></div>
