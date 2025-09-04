@@ -184,10 +184,12 @@
         }
 
         .project-image {
-            height: 250px;
-            background: linear-gradient(45deg, #d4af37, #f4d03f);
-            position: relative;
-            overflow: hidden;
+             width: 100%;
+             height: 200px;              /* puoi aumentare/diminuire l’altezza */
+             background-size: cover;     /* riempie il box */
+             background-position: center;/* centra l’immagine */
+             background-repeat: no-repeat;
+             border-radius: 8px 8px 0 0; /* solo sopra, così si integra con la card */
         }
 
         .project-image::before {
@@ -622,7 +624,7 @@
 
             <div class="project-card fade-in" data-project="Tavolino">
                 <div class="project-image">
-                   <img src="img/Tavolino.png" alt="Tavolino su misura">
+                   <div class="project-image" style="background-image: url('img/Tavolino.png');"></div>
                 </div>
                 <div class="project-content">
                     <h3>Tavolini su Misura</h3>
