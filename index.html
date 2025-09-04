@@ -929,9 +929,16 @@
                     document.querySelector('.detail-time').textContent = projectData.time;
                     document.querySelector('.detail-technique').textContent = projectData.technique;
                     const header = document.querySelector('.modal-header');
-                        header.style.backgroundSize = 'contain';
-                        header.style.backgroundRepeat = 'no-repeat';
-                        header.style.backgroundPosition = 'center center';
+
+if(projectData.headerImage) {
+    header.style.backgroundImage = `url('${projectData.headerImage}')`;
+    header.style.backgroundSize = window.innerWidth <= 768 ? 'contain' : 'cover';
+    header.style.backgroundRepeat = 'no-repeat';
+    header.style.backgroundPosition = 'center center';
+} else {
+    header.style.backgroundImage = ''; // fallback al gradient marrone
+}
+
                     const galleryItems = document.querySelectorAll('.gallery-item');
                     const imageModal = document.getElementById('imageModal');
 const modalImage = imageModal.querySelector('.modal-image');
