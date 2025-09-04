@@ -409,6 +409,27 @@
         .modal.active .modal-content {
             transform: scale(1);
         }
+        .prev-image, .next-image {
+    position: absolute;
+    top: 50%;
+    font-size: 3rem;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+    transform: translateY(-50%);
+    padding: 0 15px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 50%;
+    transition: background 0.3s;
+}
+
+.prev-image:hover, .next-image:hover {
+    background: rgba(0,0,0,0.5);
+}
+
+.prev-image { left: 20px; }
+.next-image { right: 20px; }
+
 
         .modal-header {
             position: relative;
@@ -728,10 +749,13 @@
     </footer>
 
     <!-- Modal per i dettagli dei progetti -->
-    <div id="imageModal" class="modal">
+<div id="imageModal" class="modal">
     <span class="close-modal">&times;</span>
+    <span class="prev-image">&#10094;</span>
     <img class="modal-image" src="" alt="Immagine ingrandita" style="max-width:90%; max-height:90%; border-radius:15px;">
+    <span class="next-image">&#10095;</span>
 </div>
+
     <div id="projectModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -938,7 +962,8 @@ if(projectData.headerImage) {
 } else {
     header.style.backgroundImage = ''; // fallback al gradient marrone
 }
-
+let currentGallery = [];
+let currentIndex = 0;
                     const galleryItems = document.querySelectorAll('.gallery-item');
                     const imageModal = document.getElementById('imageModal');
 const modalImage = imageModal.querySelector('.modal-image');
@@ -956,6 +981,29 @@ document.querySelectorAll('.gallery-item').forEach(item => {
             imageModal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
+        document.querySelector('.prev-image').addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+    modalImage.src = currentGallery[currentIndex];
+});
+
+document.querySelector('.next-image').addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % currentGallery.length;
+    modalImage.src = currentGallery[currentIndex];
+});
+        document.addEventListener('keydown', e => {
+    if(imageModal.classList.contains('active')) {
+        if(e.key === 'Escape') {
+            imageModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        } else if(e.key === 'ArrowLeft') {
+            currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+            modalImage.src = currentGallery[currentIndex];
+        } else if(e.key === 'ArrowRight') {
+            currentIndex = (currentIndex + 1) % currentGallery.length;
+            modalImage.src = currentGallery[currentIndex];
+        }
+    }
+});
     });
 });
 
