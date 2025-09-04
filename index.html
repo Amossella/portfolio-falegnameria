@@ -806,6 +806,7 @@
                 dimensions: '300 x 250 x 35 cm (configurazione standard)',
                 time: '8 settimane',
                 technique: 'Progettazione CAD, giunzioni millimetriche, finiture miste opaco/lucido'
+                headerImage: 'img/tavolino.png'
             },
             'credenza-vintage': {
                 title: 'Credenza Vintage Restaurata',
@@ -911,6 +912,10 @@
                     document.querySelector('.detail-dimensions').textContent = projectData.dimensions;
                     document.querySelector('.detail-time').textContent = projectData.time;
                     document.querySelector('.detail-technique').textContent = projectData.technique;
+                    const header = document.querySelector('.modal-header');
+                        header.style.backgroundImage = `url('${projectData.headerImage}')`;
+                        header.style.backgroundSize = 'cover';
+                        header.style.backgroundPosition = 'top center';
                     
                     // Mostra il modal
                     modal.classList.add('active');
