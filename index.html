@@ -970,17 +970,20 @@ const modalImage = imageModal.querySelector('.modal-image');
 const closeImageModal = imageModal.querySelector('.close-modal');
 
 // Apri l'immagine a schermo intero quando clicchi su un item della gallery
-document.querySelectorAll('.gallery-item').forEach(item => {
+const galleryItems = document.querySelectorAll('.gallery-item');
+
+galleryItems.forEach((item, index) => {
     item.addEventListener('click', function(e) {
-        e.stopPropagation(); // evita di chiudere il modal progetto
-        const bg = this.style.backgroundImage;
-        if(bg && bg !== 'none') {
-            // estrai l'URL dell'immagine
-            const url = bg.slice(5, -2);
-            modalImage.src = url;
-            imageModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
+        e.stopPropagation();
+        if(!projectsData[modal.dataset.project]?.galleryImages) return;
+
+        currentGallery = projectsData[modal.dataset.project].galleryImages;
+        currentIndex = index;
+        modalImage.src = currentGallery[currentIndex];
+        imageModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+});
         document.querySelector('.prev-image').addEventListener('click', () => {
     currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
     modalImage.src = currentGallery[currentIndex];
