@@ -923,9 +923,9 @@
                     document.querySelector('.detail-time').textContent = projectData.time;
                     document.querySelector('.detail-technique').textContent = projectData.technique;
                     const header = document.querySelector('.modal-header');
-                        header.style.backgroundImage = `url('${projectData.headerImage}')`;
-                        header.style.backgroundSize = 'cover';
-                        header.style.backgroundPosition = 'top center';
+                        header.style.backgroundSize = 'contain';
+                        header.style.backgroundRepeat = 'no-repeat';
+                        header.style.backgroundPosition = 'center center';
                     const galleryItems = document.querySelectorAll('.gallery-item');
                     const imageModal = document.getElementById('imageModal');
 const modalImage = imageModal.querySelector('.modal-image');
