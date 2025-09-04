@@ -10,6 +10,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Falegnameria</title>
     <style>
+         #imageModal {
+        display: none;
+        position: fixed;
+        z-index: 3000;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.9);
+        align-items: center;
+        justify-content: center;
+    }
+
+    #imageModal.active {
+        display: flex;
+    }
+
+    #imageModal .modal-image {
+        object-fit: contain;
+        max-width: 90%;
+        max-height: 90%;
+        border-radius: 15px;
+    }
         * {
             margin: 0;
             padding: 0;
@@ -699,6 +722,10 @@
     </footer>
 
     <!-- Modal per i dettagli dei progetti -->
+    <div id="imageModal" class="modal">
+    <span class="close-modal">&times;</span>
+    <img class="modal-image" src="" alt="Immagine ingrandita" style="max-width:90%; max-height:90%; border-radius:15px;">
+</div>
     <div id="projectModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -900,6 +927,46 @@
                         header.style.backgroundSize = 'cover';
                         header.style.backgroundPosition = 'top center';
                     const galleryItems = document.querySelectorAll('.gallery-item');
+                    const imageModal = document.getElementById('imageModal');
+const modalImage = imageModal.querySelector('.modal-image');
+const closeImageModal = imageModal.querySelector('.close-modal');
+
+// Apri l'immagine a schermo intero quando clicchi su un item della gallery
+document.querySelectorAll('.gallery-item').forEach(item => {
+    item.addEventListener('click', function(e) {
+        e.stopPropagation(); // evita di chiudere il modal progetto
+        const bg = this.style.backgroundImage;
+        if(bg && bg !== 'none') {
+            // estrai l'URL dell'immagine
+            const url = bg.slice(5, -2);
+            modalImage.src = url;
+            imageModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    });
+});
+
+// Chiudi modal immagine cliccando sulla X o fuori
+closeImageModal.addEventListener('click', () => {
+    imageModal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+});
+
+imageModal.addEventListener('click', e => {
+    if(e.target === imageModal) {
+        imageModal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+});
+
+// Chiudi modal con ESC
+document.addEventListener('keydown', e => {
+    if(e.key === 'Escape' && imageModal.classList.contains('active')) {
+        imageModal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+});
+
 
 // svuota le immagini precedenti
 galleryItems.forEach((item, index) => {
