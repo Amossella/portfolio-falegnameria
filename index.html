@@ -1032,6 +1032,14 @@ galleryItems.forEach((item, index) => {
                 this.style.transform = 'translateY(0) scale(1)';
             });
         });
+        // Chiudi i modal cliccando sulla X
+document.querySelectorAll('.close-modal').forEach(btn => {
+    btn.addEventListener('click', () => {
+        btn.closest('.modal').classList.remove('active');
+        document.body.style.overflow = 'auto';
+    });
+});
+
     </script>d.addEventListener('mouseenter', function() {
                 this.style.transform = 'translateY(-10px) scale(1.02)';
             });
@@ -1040,6 +1048,7 @@ galleryItems.forEach((item, index) => {
                 this.style.transform = 'translateY(0) scale(1)';
             });
         });
+    
     </script>
 </body>
 </html>
